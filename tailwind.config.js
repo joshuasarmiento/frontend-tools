@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  variants: {
+    extend: {
+      backgroundColor: ['dark'],
+    },
+  },
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -8,6 +13,7 @@ export default {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms')
+    require('@tailwindcss/forms'),
+    require('tailwindcss-animated')
   ],
 }

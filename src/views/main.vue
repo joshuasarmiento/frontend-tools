@@ -11,7 +11,4 @@ import SearchToggleVue from '../components/search/SearchToggle.vue'
 </script>
 
 <style>
-.dark {
-  @apply bg-gradient-to-br from-neutral-950 via-zinc-950 to-stone-950;
-}
 </style>

@@ -5,7 +5,6 @@
             <h1 class="text-2xl font-bold sm:text-3xl">
                 Frontend Development Tools
             </h1>
-
             <p class="mt-2 text-sm ">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. 🚀
             </p>

@@ -6,6 +6,3 @@ import MainVue from './views/main.vue'
     <MainVue />
 </template>
 
-<style>
-
-</style>

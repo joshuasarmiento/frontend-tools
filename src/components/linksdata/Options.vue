@@ -1,7 +1,7 @@
 <template>
 <div class="text-primary mx-4 md:mx-10">
 
-    <div class="text-sm filter-options grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+    <div class="text-sm filter-options grid grid-cols-2 md:grid-cols-3">
         <div v-for="option in options" :key="option.id" class="">
             <input type="checkbox" :id="option.id" :value="option.id" v-model="selectedOptions" class="mr-2" />
             <label :for="option.id" class="mr-4">{{ option.label }}</label>
@@ -26,7 +26,7 @@
                 </button>
             </div>
 
-            <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white shadow-lg">
+            <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 w-56 border border-gray-100 bg-white shadow-lg">
                 <li v-for="sortOption in sortOptions" :key="sortOption.value" class="transition-all">
                     <a class="block cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" @click="selectSort(sortOption.value)">{{ sortOption.label }}</a>
                 </li>
@@ -148,7 +148,7 @@ const selectSort = (sortValue) => {
 const fetchData = async () => {
     isLoading.value = true;
     try {
-        const response = await axios.get('https://project-apis.onrender.com/frontendTools');
+        const response = await axios.get(import.meta.env.VITE_BASE_URL);
         items.value = response.data;
     } catch (error) {
         console.error(error);

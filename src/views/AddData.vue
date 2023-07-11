@@ -1,37 +1,36 @@
 <template>
-<div class="mx-4 md:mx-10">
-    <h2 class="text-2xl font-bold mb-4 text-primary">Add New Item</h2>
+<div class="text-primary mx-4 md:mx-10">
     <form @submit.prevent="submitForm" class="space-y-4">
         <div>
-            <label for="name" class="block font-semibold">Your Name:</label>
+            <label for="name" class="block text-sm mb-2">Your Name:</label>
             <input required v-model="formData.name" type="text" id="name" class="w-full h-9 dark:text-neutral-900">
         </div>
         <div>
-            <label for="title" class="block font-semibold">Title:</label>
+            <label for="title" class="block text-sm mb-2">Title:</label>
             <input required v-model="formData.title" type="text" id="title" class="w-full h-9 dark:text-neutral-900">
         </div>
         <div>
-            <label for="content" class="block font-semibold">Content:</label>
+            <label for="content" class="block text-sm mb-2">Content:</label>
             <textarea required v-model="formData.content" id="content" class="w-full h-21 dark:text-neutral-900"></textarea>
         </div>
         <div>
-            <label for="link" class="block font-semibold">Link:</label>
+            <label for="link" class="block text-sm mb-2">Link:</label>
             <input required v-model="formData.link" type="text" id="link" class="w-full h-9 dark:text-neutral-900">
         </div>
         <div>
-            <label for="dateAdded" class="block font-semibold">Date Added:</label>
+            <label for="dateAdded" class="block text-sm mb-2">Date Added:</label>
             <input required disabled v-model="formData.dateAdded" type="text" id="dateAdded" class="w-full h-9 dark:text-neutral-900" :placeholder="formatted">
         </div>
         <div>
-            <label class="block font-semibold">Options:</label>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
+            <label class="block text-sm mb-2">Options:</label>
+            <div class="grid grid-cols-2 md:grid-cols-3 mt-2">
                 <label v-for="option in options" :key="option" class="flex items-center">
                     <input type="checkbox" v-model="formData.options" :value="option.id">
-                    <span class="ml-2">{{ option.label }}</span>
+                    <span class="ml-2 text-sm">{{ option.label }}</span>
                 </label>
             </div>
         </div>
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2">Submit</button>
+        <button type="submit" class="border border-neutral-200 px-4 py-2">Submit</button>
     </form>
 
     <section v-if="toggle" class="fixed top-10 right-5 animate-fade-left">
@@ -44,10 +43,10 @@
                 </span>
 
                 <div class="flex-1">
-                    <strong class="block font-medium text-gray-900"> Changes saved </strong>
+                    <strong class="block font-medium text-gray-900"> Item saved! </strong>
 
                     <p class="mt-1 text-sm text-gray-700">
-                        Your product changes have been saved.
+                        Item have been saved.
                     </p>
                 </div>
 
@@ -65,6 +64,7 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import {
     useNow,
     useDateFormat
@@ -76,7 +76,7 @@ import {
 import OptionData from '../data/options.json'
 
 const toggle = ref(false)
-const formatted = useDateFormat(useNow(), 'DD-MM-YYYY', {
+const formatted = useDateFormat(useNow(), 'YYYY-MM-DD', {
     locales: 'en-PH'
 })
 
@@ -107,21 +107,23 @@ const submitForm = () => {
     }, 1000);
     setTimeout(() => {
         toggle.value = false;
+        // Redirect to home
+        window.location.href = '/frontend-tools/';
     }, 5000);
 
-    // if (formData.value.content === '') {
-    //     // Handle the case when content is empty
-    //     return;
-    // }
+    if (formData.value.content === '') {
+        // Handle the case when content is empty
+        return;
+    }
 
-    // axios.post('https://project-apis.onrender.com/frontendTools', formData.value)
-    //     .then(response => {
-    //         // Handle the successful response
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         // Handle the error
-    //         console.error(error);
-    //     });
+    axios.post(import.meta.env.VITE_BASE_URL, formData.value)
+        .then(response => {
+            // Handle the successful response
+            console.log(response.data);
+        })
+        .catch(error => {
+            // Handle the error
+            console.error(error);
+        });
 };
 </script>

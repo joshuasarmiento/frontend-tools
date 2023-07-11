@@ -38,11 +38,22 @@
         <span v-if="isLoading" class="text-sm">Loading...</span>
         <span v-else-if="displayedItems.length === 0 " class="text-sm"> No Data Found </span>
         <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-neutral-400">
-            <a :href="item.link" target="__blank" class="cursor-pointer flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+            <div class="relative flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+                <!-- <div>
+                    <div class="absolute right-4 top-4">
+                        <span class="cursor-pointer" @click="incrementUpvotes(item.id)">
+                            👍🏿
+                        </span>
+                        <span class="cursor-pointer">
+                            👍🏼
+                        </span>
+                        <span>{{ upvotesCount }}</span>
+                    </div>
+                </div> -->
                 <div>
-                    <h3 class="font-medium sm:text-lg">
-                        {{item.title}}
-                    </h3>
+                    <a :href="item.link" target="__blank" class="cursor-pointer font-medium sm:text-lg hover:underline">
+                        {{item.title}} ➚
+                    </a>
 
                     <p class="line-clamp-2 text-sm text-secondary">
                         {{ item.content }}
@@ -67,7 +78,7 @@
                         <span class="text-xs p-1.5 border border-neutral-200">{{ option }}</span>
                     </div>
                 </div>
-            </a>
+            </div>
         </article>
     </div>
 </div>
@@ -94,6 +105,7 @@ const searchTerm = ref('');
 const selectedSort = ref('default');
 const dropdownOpen = ref(false);
 const selectedOptions = ref([]);
+const upvotesCount = ref(0);
 
 const items = ref([]);
 const isLoading = ref(false);

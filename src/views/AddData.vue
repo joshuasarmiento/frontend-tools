@@ -1,26 +1,31 @@
 <template>
 <div class="text-primary mx-4 md:mx-10">
     <form @submit.prevent="submitForm" class="space-y-4">
-        <div>
-            <label for="name" class="block text-sm mb-2">Your Name:</label>
-            <input required v-model="formData.name" type="text" id="name" class="w-full h-9 dark:text-neutral-900">
+        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-x-2 md:space-y-0">
+            <div class="w-full">
+                <label for="name" class="block text-sm mb-2">Your Name:</label>
+                <input required v-model="formData.name" type="text" id="name" class="w-full h-8 dark:text-neutral-900">
+            </div>
+            <div class="w-full"> 
+                <label for="title" class="block text-sm mb-2">Item Title:</label>
+                <input required v-model="formData.title" type="text" id="title" class="w-full h-8 dark:text-neutral-900">
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-x-2 md:space-y-0">
+            <div class="w-full">
+                <label for="link" class="block text-sm mb-2">Item Link:</label>
+                <input required v-model="formData.link" type="text" id="link" class="w-full h-8 dark:text-neutral-900">
+            </div>
+            <div class="w-full">
+                <label for="dateAdded" class="block text-sm mb-2">Date Added:</label>
+                <input required disabled v-model="formData.dateAdded" type="text" id="dateAdded" class="w-full h-8 bg-neutral-300 dark:text-neutral-600" :placeholder="formatted">
+            </div>
         </div>
         <div>
-            <label for="title" class="block text-sm mb-2">Title:</label>
-            <input required v-model="formData.title" type="text" id="title" class="w-full h-9 dark:text-neutral-900">
+            <label for="content" class="block text-sm mb-2">Item Description:</label>
+            <textarea required v-model="formData.content" id="content" class="w-full h-18 dark:text-neutral-900"></textarea>
         </div>
-        <div>
-            <label for="content" class="block text-sm mb-2">Content:</label>
-            <textarea required v-model="formData.content" id="content" class="w-full h-21 dark:text-neutral-900"></textarea>
-        </div>
-        <div>
-            <label for="link" class="block text-sm mb-2">Link:</label>
-            <input required v-model="formData.link" type="text" id="link" class="w-full h-9 dark:text-neutral-900">
-        </div>
-        <div>
-            <label for="dateAdded" class="block text-sm mb-2">Date Added:</label>
-            <input required disabled v-model="formData.dateAdded" type="text" id="dateAdded" class="w-full h-9 dark:text-neutral-900" :placeholder="formatted">
-        </div>
+
         <div>
             <label class="block text-sm mb-2">Options:</label>
             <div class="grid grid-cols-2 md:grid-cols-3 mt-2">
@@ -30,7 +35,7 @@
                 </label>
             </div>
         </div>
-        <button type="submit" class="border border-neutral-200 px-4 py-2">Submit</button>
+        <button type="submit" class="border border-neutral-200 px-6 py-1 hover:bg-neutral-200 hover:text-neutral-900">Submit</button>
     </form>
 
     <section v-if="toggle" class="fixed top-10 right-5 animate-fade-left">

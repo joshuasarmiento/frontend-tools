@@ -10,11 +10,11 @@
 
     <SearchBarToogle v-model="searchTerm" :placeholder="searchPlaceholder" />
 
-    <div class="tools-info flex flex-col md:flex-row justify-between items-start">
+    <div class="tools-info flex flex-col md:flex-row justify-between items-center md:items-end">
         <span class="mb-2 md:mb-0"> Showing {{ displayedItems.length }} of {{ items.length }} Total Tools</span>
         <div class="relative">
-            <div class="inline-flex items-center overflow-hidden rounded-md border bg-white">
-                <a href="#" class="border-e px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700">
+            <div class="inline-flex items-center overflow-hidden border bg-white">
+                <a href="#" class="border-e  px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700">
                     Sort by: {{ selectedSort }}
                 </a>
 
@@ -26,9 +26,9 @@
                 </button>
             </div>
 
-            <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 w-56 border border-gray-100 bg-white shadow-lg">
+            <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 p-4 w-56 border border-neutral-400 bg-white shadow-lg">
                 <li v-for="sortOption in sortOptions" :key="sortOption.value" class="transition-all">
-                    <a class="block cursor-pointer rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" @click="selectSort(sortOption.value)">{{ sortOption.label }}</a>
+                    <a class="cursor-pointer text-xs text-neutral-600 hover:bg-gray-50 hover:text-gray-700" @click="selectSort(sortOption.value)">{{ sortOption.label }}</a>
                 </li>
             </div>
         </div>
@@ -37,7 +37,7 @@
     <div class="text-primary grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         <span v-if="isLoading" class="text-sm">Loading...</span>
         <span v-else-if="displayedItems.length === 0 " class="text-sm"> No Data Found </span>
-        <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-gray-100">
+        <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-neutral-400">
             <a :href="item.link" target="__blank" class="cursor-pointer flex items-start gap-4 p-4 sm:p-6 lg:p-8">
                 <div>
                     <h3 class="font-medium sm:text-lg">
@@ -62,6 +62,9 @@
                                 {{ item.upvotes}}
                             </span>
                         </p>
+                    </div>
+                    <div v-for="option in item.options" :key="option" class="mt-2 opacity-50">
+                        <span class="text-xs p-1.5 border border-neutral-200">{{ option }}</span>
                     </div>
                 </div>
             </a>

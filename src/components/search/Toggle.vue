@@ -1,9 +1,11 @@
 <template>
     <div class="flex justify-center p-4">
-        <a @click="!toggleDark(); toggleTheme();" class="cursor-pointer">
+        <a @click="!toggleDark(); toggleTheme();" class="cursor-pointer hover:animate-wiggle-more">
             <span class="sr-only">IsDarkmode</span>
             <span>
-                <img :src="icon" class="w-5 h-5 text-neutral-100" :alt="iconAlt" />
+                <!-- <img :src="icon" class="w-5 h-5 text-neutral-100" :alt="iconAlt" /> -->
+                <span v-if="isDarkmode">🌑</span>
+                <span v-else>🌞</span>
             </span>
         </a>
     </div>
@@ -25,7 +27,9 @@ import {
 
 const iconBlack = MoonLight;
 const iconWhite = SunLight;
-
+// 🌙 🌑 🌚
+// ☀️ 🌞
+// ⭐
 const isDarkmode = ref(true);
 const icon = computed(() => (isDarkmode.value ? iconBlack : iconWhite));
 const iconAlt = computed(() => (isDarkmode.value ?"Moon Light" : "Sun Light"));

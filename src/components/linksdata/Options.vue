@@ -1,7 +1,7 @@
 <template>
-<div class="text-primary mx-auto max-w-screen-md px-4 py-8 sm:px-6 lg:px-8">
+<div class="text-primary mx-4 md:mx-10">
 
-    <div class="text-sm filter-options grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div class="text-sm filter-options grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <div v-for="option in options" :key="option.id" class="">
             <input type="checkbox" :id="option.id" :value="option.id" v-model="selectedOptions" class="mr-2" />
             <label :for="option.id" class="mr-4">{{ option.label }}</label>
@@ -35,7 +35,9 @@
     </div>
 
     <div class="text-primary grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-        <article v-for="item in displayedItems" :key="item.id" class="rounded-lg border-2 border-gray-100">
+        <span v-if="isLoading" class="text-sm">Loading...</span>
+        <span v-else-if="displayedItems.length === 0 " class="text-sm"> No Data Found </span>
+        <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-gray-100">
             <a :href="item.link" target="__blank" class="cursor-pointer flex items-start gap-4 p-4 sm:p-6 lg:p-8">
                 <div>
                     <h3 class="font-medium sm:text-lg">
@@ -64,53 +66,34 @@
                 </div>
             </a>
         </article>
-
-        <div class="txt-preimary flex items-center justify-start py-4 gap-3">
-            <a @click.prevent="goToPreviousPage" class="cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white  rtl:rotate-180">
-                <span class="sr-only">Previous Page</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-            </a>
-
-            <p class="text-xs ">
-                {{ currentPage }} <span class="mx-0.25">/</span> {{ totalPages }}
-            </p>
-
-            <a @click.prevent="goToNextPage" class="cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white  rtl:rotate-180">
-                <span class="sr-only">Next Page</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </div>
     </div>
 </div>
 </template>
 
 <script setup>
+import axios from 'axios'
+
 import {
     ref,
-    computed
+    computed,
+    onMounted
 } from 'vue';
 import SearchBarToogle from '../../components/search/SearchToggle.vue'
-import itemData from '../../data/items.json'
+// import itemData from '../../data/items.json'
 import OptionData from '../../data/options.json'
 import SortOptionData from '../../data/sortOptions.json'
 
-const items = ref(itemData);
 const options = OptionData;
 const sortOptions = SortOptionData;
-
-const itemsPerPage = 10; // Number of items to display per page
 
 const searchPlaceholder = ref('Search..')
 const searchTerm = ref('');
 const selectedSort = ref('default');
 const dropdownOpen = ref(false);
 const selectedOptions = ref([]);
-const currentPage = ref(1);
 
+const items = ref([]);
+const isLoading = ref(false);
 const displayedItems = computed(() => {
     let sortedItems = [...items.value];
     switch (selectedSort.value) {
@@ -145,17 +128,8 @@ const displayedItems = computed(() => {
         );
     }
 
-      // Pagination logic
-    const startIndex = (currentPage.value - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return sortedItems.slice(startIndex, endIndex);
+    return sortedItems;
 });
-
-const displayedItemsLength = computed(() => displayedItems.value.length);
-
-const totalPages = computed(() =>
-  Math.ceil(displayedItemsLength.length / itemsPerPage)
-);
 
 const formatDate = (date) => {
     const options = {
@@ -171,6 +145,20 @@ const selectSort = (sortValue) => {
     dropdownOpen.value = false;
 };
 
+const fetchData = async () => {
+    isLoading.value = true;
+    try {
+        const response = await axios.get('https://project-apis.onrender.com/frontendTools');
+        items.value = response.data;
+    } catch (error) {
+        console.error(error);
+    } finally {
+        isLoading.value = false;
+    }
+};
+
+onMounted(fetchData);
+
 const searchItems = () => {
     // Implement the search logic when the input value changes
     // The computed property 'displayedItems' will automatically update
@@ -178,17 +166,5 @@ const searchItems = () => {
 
 const clearSearch = () => {
     searchTerm.value = '';
-};
-
-const goToPreviousPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
-};
-
-const goToNextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
 };
 </script>

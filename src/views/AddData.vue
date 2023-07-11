@@ -26,7 +26,7 @@
             <label class="block font-semibold">Options:</label>
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
                 <label v-for="option in options" :key="option" class="flex items-center">
-                    <input required type="checkbox" v-model="formData.options" :value="option.id">
+                    <input type="checkbox" v-model="formData.options" :value="option.id">
                     <span class="ml-2">{{ option.label }}</span>
                 </label>
             </div>

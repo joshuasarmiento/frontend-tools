@@ -1,0 +1,78 @@
+[
+    {
+        "id": "blogs",
+        "label": "Blogs"
+    },
+    {
+        "id": "onlineCourses",
+        "label": "Online Courses"
+    },
+    {
+        "id": "askQuestions",
+        "label": "Ask Questions"
+    },
+    {
+        "id": "podcasts",
+        "label": "Podcasts"
+    },
+    {
+        "id": "textEditors",
+        "label": "Text Editors"
+    },
+    {
+        "id": "youtubeChannels",
+        "label": "Youtube Channels"
+    },
+    {
+        "id": "cssFrameworks",
+        "label": "CSS Frameworks"
+    },
+    {
+        "id": "icons",
+        "label": "Icons"
+    },
+    {
+        "id": "fonts",
+        "label": "Fonts"
+    },
+    {
+        "id": "codePlaygrounds",
+        "label": "Code Playgrounds"
+    },
+    {
+        "id": "versionControl",
+        "label": "Version Control"
+    },
+    {
+        "id": "debuggingTesting",
+        "label": "Debugging/Testing"
+    },
+    {
+        "id": "imageOptimization",
+        "label": "Image Optimization"
+    },
+    {
+        "id": "cms",
+        "label": "CMS"
+    },
+    {
+        "id": "staticSiteGenerator",
+        "label": "Static Site Generator"
+    },
+    {
+        "id": "styleGuides",
+        "label": "Style Guides"
+    },
+    {
+        "id": "domainRegistration",
+        "label": "Domain Registration"
+    },
+    {
+        "id": "cloudStorage",
+        "label": "Cloud Storage"
+    },
+    {
+        "id": "productivityTools",
+        "label": "Productivity Tools"
+    }
+]

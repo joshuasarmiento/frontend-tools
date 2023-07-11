@@ -1,0 +1,26 @@
+[
+    {
+        "label": "Default - Newest",
+        "value": "default"
+    },
+    {
+        "label": "Most Upvoted",
+        "value": "upvotes"
+    },
+    {
+        "label": "Sort By Name (A - Z)",
+        "value": "nameAsc"
+    },
+    {
+        "label": "Sort By Name (Z - A)",
+        "value": "nameDesc"
+    },
+    {
+        "label": "Date Added (Newest - Oldest)",
+        "value": "dateDesc"
+    },
+    {
+        "label": "Date Added (Oldest - Newest)",
+        "value": "dateAsc"
+    }
+]

@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "title": "Tool 1",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "https://www.google.com",
+        "dateAdded": "2023-01-01",
+        "upvotes": 10,
+        "options": ["blogs", "onlineCourses"]
+    },
+    {
+        "id": 2,
+        "title": "Tool 2",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 53,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 3,
+        "title": "Tool 3",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 52,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 4,
+        "title": "Tool 4",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 65,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 5,
+        "title": "Tool 5",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 25,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 6,
+        "title": "Tool 6",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 15,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 7,
+        "title": "Tool 7",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 665,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 8,
+        "title": "Tool 8",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 55,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 9,
+        "title": "Tool 9",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 35,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 10,
+        "title": "Tool 10",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 25,
+        "options": ["onlineCourses", "youtubeChannels"]
+    },
+    {
+        "id": 11,
+        "title": "Tool 11",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "link": "#",
+        "dateAdded": "2023-01-02",
+        "upvotes": 15,
+        "options": ["onlineCourses", "youtubeChannels"]
+    }
+]

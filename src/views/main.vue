@@ -1,14 +1,14 @@
 <template>
 <main>
     <HeaderVue />
-    <SearchToggleVue />
+    <ToggleVue />
+    <TabsVue />
 </main>
 </template>
 
 <script setup>
 import HeaderVue from '../components/header/Header.vue'
-import SearchToggleVue from '../components/search/SearchToggle.vue'
+import ToggleVue from '../components/search/Toggle.vue'
+import TabsVue from './Tabs.vue'
 </script>
 
-<style>
-</style>

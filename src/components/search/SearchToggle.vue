@@ -1,9 +1,9 @@
 <template>
-<div class="text-primary flex items-center justify-center md:justify-start gap-4 pb-4 mt-8">
-    <div class="flex items-center gap-4">
+<div class="text-primary">
+    <div class="gap-4">
         <div class="relative">
             <label class="sr-only" for="search"> Search </label>
-            <input class="h-8 w-full border-neutral-400 pe-10 ps-4 text-sm dark:text-neutral-800" id="search" v-model="searchTerm" @input="searchItems" type="text" :placeholder="placeholder" />
+            <input class="h-9 w-full border-neutral-400 pe-10 ps-4 text-sm dark:text-neutral-800" id="search" v-model="searchTerm" @input="searchItems" type="text" :placeholder="placeholder" />
             <button type="button" class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full p-1 transition-all ">
                 <span class="sr-only">Search</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 dark:text-neutral-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

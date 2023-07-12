@@ -8,28 +8,31 @@
         </div>
     </div>
 
-    <SearchBarToogle v-model="searchTerm" :placeholder="searchPlaceholder" />
 
-    <div class="tools-info flex flex-col md:flex-row justify-between items-center md:items-end">
-        <span class="mb-2 md:mb-0"> Showing {{ displayedItems.length }} of {{ items.length }} Total Tools</span>
-        <div class="relative">
-            <div class="inline-flex items-center overflow-hidden border bg-white">
-                <a href="#" class="border-e  px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700">
-                    Sort by: {{ selectedSort }}
-                </a>
+    <div class="tools-info flex flex-col-reverse md:flex-row justify-between items-center md:items-end mt-8">
+        <span class="mt-2 md:mb-0"> Showing {{ displayedItems.length }} of {{ items.length }} Total Tools</span>
+        
+        <div class="flex space-x-2">
+            <SearchBarToogle v-model="searchTerm" :placeholder="searchPlaceholder" />
+            <div class="relative">
+                <div class="inline-flex items-center overflow-hidden border bg-white">
+                    <a href="#" class="border-e  px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700">
+                        Sort by: {{ selectedSort }}
+                    </a>
 
-                <button @click="dropdownOpen = !dropdownOpen" class="h-full p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700">
-                    <span class="sr-only">Menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-            </div>
+                    <button @click="dropdownOpen = !dropdownOpen" class="h-full p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700">
+                        <span class="sr-only">Menu</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
 
-            <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 p-4 w-56 border border-neutral-400 bg-white shadow-lg">
-                <li v-for="sortOption in sortOptions" :key="sortOption.value" class="transition-all">
-                    <a class="cursor-pointer text-xs text-neutral-600 hover:bg-gray-50 hover:text-gray-700" @click="selectSort(sortOption.value)">{{ sortOption.label }}</a>
-                </li>
+                <div v-if="dropdownOpen" class="absolute end-0 z-10 mt-2 p-4 w-56 border border-neutral-400 bg-white shadow-lg">
+                    <li v-for="sortOption in sortOptions" :key="sortOption.value" class="transition-all">
+                        <a class="cursor-pointer text-xs text-neutral-600 hover:bg-gray-50 hover:text-gray-700" @click="selectSort(sortOption.value)">{{ sortOption.label }}</a>
+                    </li>
+                </div>
             </div>
         </div>
     </div>
@@ -37,7 +40,7 @@
     <div class="text-primary grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         <span v-if="isLoading" class="text-sm">Loading...</span>
         <span v-else-if="displayedItems.length === 0 " class="text-sm"> No Data Found </span>
-        <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-neutral-400">
+        <article v-else v-for="item in displayedItems" :key="item.id" class="border-2 border-neutral-400 overflow-auto">
             <div class="relative flex items-start gap-4 p-4 sm:p-6 lg:p-8">
                 <!-- <div>
                     <div class="absolute right-4 top-4">
